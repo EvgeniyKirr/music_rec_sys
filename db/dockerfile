@@ -1,0 +1,5 @@
+FROM clickhouse/clickhouse-server:24.3
+
+COPY tracks.tsv.gz /var/lib/clickhouse/tracks.tsv.gz
+COPY initdb.sh /docker-entrypoint-initdb.d
+

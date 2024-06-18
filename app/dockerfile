@@ -1,0 +1,9 @@
+FROM pytorch/pytorch:2.2.2-cuda11.8-cudnn8-runtime
+WORKDIR /app
+
+COPY requirements.txt requirements.txt
+RUN python -m pip install -r requirements.txt
+RUN apt-get update && apt-get install -y ffmpeg
+
+COPY . .
+CMD ["python", "./find_track.py"]

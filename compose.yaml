@@ -1,0 +1,25 @@
+version: '1.0'
+
+services:
+  python:
+    build: ./app
+    container_name: app
+    volumes:
+      - ./playlist:/app/playlist
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  clickhouse:
+    build: ./db
+    container_name: db
+    hostname: clickhouse
+    ports:
+      - 8123:8123
+      - 9000:9000
+    ulimits:
+      nofile: 262144
