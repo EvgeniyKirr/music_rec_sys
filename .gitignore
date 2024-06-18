@@ -1,4 +1,4 @@
 .ipynb_checkpoints
 __pycache__
-
+playlist/*
 db/tracks.tsv.gz
